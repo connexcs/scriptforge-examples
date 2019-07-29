@@ -1,17 +1,15 @@
 module.export = {
-	main: function (vars) {
-
+	search: async function ({number}) {
+		// Returns Array of Objects, e.g [{did:'1234'}]
 	},
-	search: async function (vars) {
-
+	allocate: async function ({did}) {
+		// The information returned by this function will be passed to 
+		// https://api-docs.connexcs.com/#api-Did-Create
 	},
-	allocate: async function (vars) {
-
-	},
-	release: async function (vars) {
-	
+	release: async function ({did}) {
+		// Returns True / False
 	},
 	list: async function () {
-		
+		// Returns Array of Objects, e.g [{did:'1234'}]
 	}
 }
