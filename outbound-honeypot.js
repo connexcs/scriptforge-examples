@@ -1,3 +1,7 @@
+/*
+The following script allows a number to be dialled only twice within 60 minutes or a 24 hours block is applied.
+*/
+
 const userspace = require('cxUserspace');
 
 async function main(data){
