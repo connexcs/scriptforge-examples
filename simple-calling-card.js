@@ -7,5 +7,5 @@
 async function main(data, ctx) {
 	await ctx.answer();
 	var {status, value} = await ctx.ivr('user/calling_card_ivr.wav', 20, 10, 15);
-	await ctx.bridge(value);
+	await ctx.bridge(value, false, true);
 }
