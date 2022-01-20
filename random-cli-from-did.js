@@ -1,3 +1,8 @@
+/*
+ * NOTE: THIS CODE IS NOW REDUNDANT AS THE FEATURE IS BUILT IN TO CONNEXCS NATIVELY.
+ * It is being left here purely for reference purposes
+ */
+
 const rest = require('cxRest');
 const api = rest.auth("api@api.com"); 
 
