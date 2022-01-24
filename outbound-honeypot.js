@@ -1,41 +1,18 @@
-/*
-The following script allows a number to be dialled only twice within 60 minutes or a 24 hours block is applied.
-*/
+const {kv, incr} = require('cxKV');
 
-const userspace = require('cxUserspace');
+const MAX_ATTEMPTS = 3;
+const CHECK_PERIOD = 2; // Minutes
+const BLOCK_PERIOD = 30; // Minutes
 
-async function main(data){
-	var res = await userspace.read('blocked', data.routing.dest_number);
-	if (res) {
-		console.log(+ new Date(), Number(res.value) + 86400000);
-		if (+ new Date() > Number(res.value) + 86400000) { // Expired
-			await userspace.delete('blocked', data.routing.dest_number, + new Date());
-			return data;
-		} else {
-			throw new Error('603 Blocked');
-		}
+async function main (data) {
+	const key = `${data.routing.account_id}:${data.routing.dest_number}`;
+	const counter = await kv.get(key);
+	if (counter >= MAX_ATTEMPTS) {
+		 throw new Error('603 Destination Blocked');
 	}
-
-	var callonce = await userspace.read('callonce', data.routing.dest_number);
-	if (!callonce) {
-		await userspace.create('callonce', data.routing.dest_number, JSON.stringify([{dt: + new Date()}]))
-		return data;
+	var incValue = await incr(key, 1, CHECK_PERIOD * 60);
+	if (incValue >= MAX_ATTEMPTS) {
+		await incr(key, 100, BLOCK_PERIOD * 60);
 	}
-	callonce = JSON.parse(callonce.value);
-
-	callonce = callonce.filter(row => {
-		return row.dt > (+ new Date()) - 3600000
-	})
-	console.log(callonce);
-	
-	if (callonce.length < 5) {
-		callonce.push({dt: + new Date()});
-		var x = await userspace.update('callonce', data.routing.dest_number, {value: JSON.stringify(callonce)})
-		console.log(x);
-		return data;
-	}
-	
-	await userspace.delete('callonce', data.routing.dest_number, + new Date());
-	await userspace.create('blocked', data.routing.dest_number, + new Date())
-	throw new Error('603 Blocked');
+	return data;
 }
