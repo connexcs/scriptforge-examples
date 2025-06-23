@@ -10,16 +10,16 @@ Each script can be copied directly into your ScriptForge environment inside the 
 
 | Script Name | Description | View |
 |-------------|-------------|-------|
-| `ctx Example` | Example using ctx to answer call, speak and hang up | [📄 View](https://github.com/connexcs/scriptforge-examples/blob/3f892099c682bbe418904c9a74982976ae2c207c/ctx-example.js) |
-| `ctx.answer` | Answer Call | [📄 View](https://github.com/connexcs/scriptforge-examples/blob/3f892099c682bbe418904c9a74982976ae2c207c/ctx-answer.js) |
-| `ctx.hangup` | Hang up the call | [📄 View](https://github.com/connexcs/scriptforge-examples/blob/3f892099c682bbe418904c9a74982976ae2c207c/ctx-hangup.js) |
-| `ctx.tts` | Perform text-to-speech on the call | [📄 View](https://github.com/connexcs/scriptforge-examples/blob/3f892099c682bbe418904c9a74982976ae2c207c/ctx-tts.js) |
-| `ctx.bridge` | Bridge the call to another destination | [📄 View](https://github.com/connexcs/scriptforge-examples/blob/3f892099c682bbe418904c9a74982976ae2c207c/ctx-bridge.js) |
-| `ctx.echo` | Echo the call | [📄 View](https://github.com/connexcs/scriptforge-examples/blob/3f892099c682bbe418904c9a74982976ae2c207c/ctx-echo.js) |
-| `ctx.play` | Play an audio file | [📄 View](https://github.com/connexcs/scriptforge-examples/blob/3f892099c682bbe418904c9a74982976ae2c207c/ctx-play.js) |
-| `ctx.ivr` | Interactive voice response to collect DTMF input | [📄 View](https://github.com/connexcs/scriptforge-examples/blob/3f892099c682bbe418904c9a74982976ae2c207c/ctx-ivr.js) |
+| `ctx Example` | Example using ctx to answer call, speak and hang up | [📄 View](https://github.com/connexcs/scriptforge-examples/blob/528bf1624f6d6a224396d1a0d43c106142bf3d39/ctx-example.js) |
+| `ctx.answer` | Answer Call | [📄 View](https://github.com/connexcs/scriptforge-examples/blob/528bf1624f6d6a224396d1a0d43c106142bf3d39/ctx-answer.js) |
+| `ctx.hangup` | Hang up the call | [📄 View](https://github.com/connexcs/scriptforge-examples/blob/528bf1624f6d6a224396d1a0d43c106142bf3d39/ctx-hangup.js) |
+| `ctx.tts` | Perform text-to-speech on the call | [📄 View](https://github.com/connexcs/scriptforge-examples/blob/528bf1624f6d6a224396d1a0d43c106142bf3d39/ctx-tts.js) |
+| `ctx.bridge` | Bridge the call to another destination | [📄 View](https://github.com/connexcs/scriptforge-examples/blob/528bf1624f6d6a224396d1a0d43c106142bf3d39/ctx-bridge.js) |
+| `ctx.echo` | Echo the call | [📄 View](https://github.com/connexcs/scriptforge-examples/blob/528bf1624f6d6a224396d1a0d43c106142bf3d39/ctx-echo.js) |
+| `ctx.play` | Play an audio file | [📄 View](https://github.com/connexcs/scriptforge-examples/blob/528bf1624f6d6a224396d1a0d43c106142bf3d39/ctx-play.js) |
+| `ctx.ivr` | Interactive voice response to collect DTMF input | [📄 View](https://github.com/connexcs/scriptforge-examples/blob/528bf1624f6d6a224396d1a0d43c106142bf3d39/ctx-ivr.js) |
 | `ctx.blockDtmf` | Block DTMF | [📄 View](https://github.com/connexcs/scriptforge-examples/blob/3f892099c682bbe418904c9a74982976ae2c207c/ctx-blockdtmf.js) |
-| `ctx.set & ctx.get` | Sets a variable and then retrieves it | [📄 View](https://github.com/connexcs/scriptforge-examples/blob/3f892099c682bbe418904c9a74982976ae2c207c/ctx-set-get.js) |
+| `ctx.set & ctx.get` | Sets a variable and then retrieves it | [📄 View](https://github.com/connexcs/scriptforge-examples/blob/528bf1624f6d6a224396d1a0d43c106142bf3d39/ctx-set-get.js) |
 | `simple-calling-card` | Class 5 Programmable Voice Application | [📄 View](https://github.com/connexcs/scriptforge-examples/blob/3f892099c682bbe418904c9a74982976ae2c207c/simple-calling-card.js) |
 | `account-jump.js` | Class 5 Account Jump (Pinless Calling Support) | [📄 View](https://github.com/connexcs/scriptforge-examples/blob/3f892099c682bbe418904c9a74982976ae2c207c/account-jump.js) |
 | `api.js` | Uses cxRest to authenticate and fetch customer data from the ConnexCS API. | [📄 View](https://github.com/connexcs/scriptforge-examples/blob/3f892099c682bbe418904c9a74982976ae2c207c/api.js) |
