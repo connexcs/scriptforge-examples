@@ -30,6 +30,9 @@ Each script can be copied directly into your ScriptForge environment inside the 
 | `random-cli-from-did.js` | Random CLI from DID | [📄 View](https://github.com/connexcs/scriptforge-examples/blob/3f892099c682bbe418904c9a74982976ae2c207c/random-cli-from-did.js) |
 | `random-cli-from-ranges.js` | Choose a random CLI from a range of number ranges passed in as a variable. | [📄 View](https://github.com/connexcs/scriptforge-examples/blob/3f892099c682bbe418904c9a74982976ae2c207c/random-cli-from-ranges.js) |
 | `rss-feed.js` | Add a job to ScriptForge job queue | [📄 View](https://github.com/connexcs/scriptforge-examples/blob/3f892099c682bbe418904c9a74982976ae2c207c/rss-feed.js) |
+| `pin-verification.js` | PIN Verification | [📄 View](https://github.com/connexcs/scriptforge-examples/blob/3f892099c682bbe418904c9a74982976ae2c207c/pin-verification.js) |
+| `simple-greeting.js` | Simple Greeting | [📄 View](https://github.com/connexcs/scriptforge-examples/blob/3f892099c682bbe418904c9a74982976ae2c207c/simple-greeting.js) |
+| `balance-announcer.js` | Customer Credit Balance Announcer Using SIP users | [📄 View](https://github.com/connexcs/scriptforge-examples/blob/3f892099c682bbe418904c9a74982976ae2c207c/balance-announcer.js) |
 
 ---
 
