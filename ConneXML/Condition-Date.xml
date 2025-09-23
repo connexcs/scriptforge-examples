@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+	<Condition wday="2-6">
+		<Say>It is a weekday</Say>
+	</Condition>
+	<Condition year="2021">
+		<Say>It is 2021</Say>
+	</Condition>
+	<Condition time-of-day="17:00:00-07:00:00" timezone="America/New_York">
+		<Say>It is outside working hours</Say>
+	</Condition>
+</Response>

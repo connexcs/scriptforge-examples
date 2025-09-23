@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+	<Enter>
+		B
+	</Enter>
+	<Press digit="1" context="A">
+		<Play>
+			user/adam.wav
+		</Play>
+	</Press>
+	<Press digit="2" context="A">
+		<Redirect>
+			https://cdn.cnxcdn.com/public/1093/test.xml
+		</Redirect>
+	</Press>
+	<Press digit="3">
+		<Transfer attended="false">
+			newExtension
+		</Transfer>
+	</Press>
+	<Press digit="2" context="B">
+		<Hangup />
+	</Press>
+	<Press digit="1" context="B">
+		<Enter>
+			A
+		</Enter>
+	</Press>
+</Response>

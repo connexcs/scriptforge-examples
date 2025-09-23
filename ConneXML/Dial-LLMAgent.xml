@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+	<Dial>
+		<LLM-Agent appId="123456" voice="bob">
+			asst_MTbETp3jyb9tG9eAepFGxgPb
+		</LLM-Agent>
+	</Dial>
+	<Dial>
+		<LLM-Agent>
+			You are a helpful friend.
+		</LLM-Agent>
+	</Dial>
+</Response>

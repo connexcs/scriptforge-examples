@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+	<Gather action="https://cdn.cnxcdn.com/public/1093/test.xml" method="GET" numDigits="6" finishOnKey="*" timeout="120">
+		<Play>
+			https://samplelib.com/lib/preview/wav/sample-12s.wav
+		</Play>
+	</Gather>
+	<Say voice="kal">
+		This is outside Gather
+	</Say>
+</Response>

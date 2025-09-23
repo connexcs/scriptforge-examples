@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+	<Dial>
+		<Queue timeout="60" timeout-destination="123456" music="user/myMusic.wav">10482</Queue>
+	</Dial>
+</Response>

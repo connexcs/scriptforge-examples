@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+	<Connect>
+		<Stream url="wss://echo.websocket.org/">
+			<Parameter name="Hello" value="World" />
+		</Stream>
+	</Connect>
+	<Start>
+		<Stream url="wss://echo.websocket.org/" />
+	</Start>
+	<Stop>
+		<Stream />
+	</Stop>
+</Response>

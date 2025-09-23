@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+	<Play loop="3">ivr/ivr-invalid_number_format.wav</Play>
+	<Play>user/adam.wav</Play>
+	<Play>https://file-examples.com/storage/fef3ad87fb6568c5a9d7b04/2017/11/file_example_WAV_1MG.wav</Play>
+</Response>

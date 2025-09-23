@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+	<Before>
+		<Set name="newHome" value="{{address}}" />
+	</Before>
+	<Set name="name" value="Joe" />
+	<Set name="x-name" value="{{newHome}}" header="true" />
+	<Say loop="5">
+		Hello my name is {{newHome}}
+	</Say>
+	<Dial>
+		<!-- <Header name="x-name" value="{{newHome}}" /> -->
+		<Number>
+			{{substring Extension 5}}
+		</Number>
+	</Dial>
+	<Digit dtmf_leg="b">
+		1
+	</Digit>
+</Response>

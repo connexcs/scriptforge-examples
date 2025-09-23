@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+	<Gather actionOnEmptyResult="true" method="GET" numDigits="1" finishOnKey="*" timeout="120" >
+		<Play>https://samplelib.com/lib/preview/wav/sample-12s.wav</Play> 
+	</Gather>
+	<Condition field="gather_result" expression="1">
+		<Say>You have pushed 1, which was the correct digit</Say>
+	</Condition>
+</Response>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<element name="Response">
+		<complexType>
+			<sequence>
+				<element name="Say" minOccurs="0" maxOccurs="unbounded">
+					<complexType>
+						<simpleContent>
+							<extension base="xs:string">
+								<attribute name="voice" type="xs:string" />
+								<attribute name="language" type="xs:string" />
+								<attribute name="loop" type="xs:integer" />
+							</extension>
+						</simpleContent>
+					</complexType>
+				</element>
+				<element name="Play" minOccurs="0" maxOccurs="unbounded">
+					<complexType>
+						<simpleContent>
+							<extension base="xs:string">
+								<attribute name="loop" type="xs:integer" />
+							</extension>
+						</simpleContent>
+					</complexType>
+				</element>
+				<element name="Gather" minOccurs="0" maxOccurs="unbounded">
+					<complexType>
+						<sequence>
+							<element name="Say" minOccurs="0" maxOccurs="unbounded" type="xs:string" />
+							<!-- Add more nested elements as needed -->
+						</sequence>
+						<attribute name="action" type="xs:string" />
+						<attribute name="method" type="xs:string" />
+						<attribute name="timeout" type="xs:integer" />
+						<attribute name="numDigits" type="xs:integer" />
+					</complexType>
+				</element>
+				<element name="Dial" minOccurs="0" maxOccurs="unbounded">
+					<complexType>
+						<sequence>
+							<element name="Number" minOccurs="1" maxOccurs="unbounded" type="xs:string" />
+							<!-- Add more nested elements as needed -->
+						</sequence>
+						<attribute name="action" type="xs:string" />
+						<attribute name="method" type="xs:string" />
+						<attribute name="timeout" type="xs:integer" />
+					</complexType>
+				</element>
+				<element name="Enqueue" minOccurs="0" maxOccurs="unbounded">
+					<complexType>
+						<sequence>
+							<element name="Wait" minOccurs="0" maxOccurs="unbounded" type="xs:integer" />
+							<!-- Add more nested elements as needed -->
+						</sequence>
+						<attribute name="action" type="xs:string" />
+						<attribute name="method" type="xs:string" />
+					</complexType>
+				</element>
+				<element name="Conference" minOccurs="0" maxOccurs="unbounded">
+					<complexType>
+						<sequence>
+							<element name="Wait" minOccurs="0" maxOccurs="unbounded" type="xs:integer" />
+							<!-- Add more nested elements as needed -->
+						</sequence>
+						<attribute name="muted" type="xs:boolean" />
+						<attribute name="beep" type="xs:boolean" />
+						<attribute name="startConferenceOnEnter" type="xs:boolean" />
+						<attribute name="endConferenceOnExit" type="xs:boolean" />
+					</complexType>
+				</element>
+				<element name="Redirect" minOccurs="0" maxOccurs="unbounded">
+					<complexType>
+						<simpleContent>
+							<extension base="xs:string">
+								<attribute name="method" type="xs:string" />
+							</extension>
+						</simpleContent>
+					</complexType>
+				</element>
+				<!-- Add more ConneXML verbs as needed -->
+			</sequence>
+		</complexType>
+	</element>
+</schema>
