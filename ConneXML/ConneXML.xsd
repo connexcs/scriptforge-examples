@@ -3,66 +3,88 @@
 	<element name="Response">
 		<complexType>
 			<sequence>
-				<element name="Say" minOccurs="0" maxOccurs="unbounded">
-					<complexType>
-						<simpleContent>
-							<extension base="xs:string">
-								<attribute name="voice" type="xs:string" />
-								<attribute name="language" type="xs:string" />
-								<attribute name="loop" type="xs:integer" />
-							</extension>
-						</simpleContent>
-					</complexType>
-				</element>
-				<element name="Play" minOccurs="0" maxOccurs="unbounded">
-					<complexType>
-						<simpleContent>
-							<extension base="xs:string">
-								<attribute name="loop" type="xs:integer" />
-							</extension>
-						</simpleContent>
-					</complexType>
-				</element>
+				<complexType name="SayType">
+					<simpleContent>
+						<extension base="xs:string">
+							<attribute name="voice" type="xs:string" />
+							<attribute name="language" type="xs:string" />
+							<attribute name="loop" type="xs:integer" />
+						</extension>
+					</simpleContent>
+				</complexType>
+				<element name="Say" minOccurs="0" maxOccurs="unbounded" type="SayType"/>
+				<complexType name="PlayType">
+					<simpleContent>
+						<extension base="xs:string">
+							<attribute name="loop" type="xs:integer" />
+						</extension>
+					</simpleContent>
+				</complexType>
+				<element name="Play" minOccurs="0" maxOccurs="unbounded" type="PlayType"/>
 				<element name="Gather" minOccurs="0" maxOccurs="unbounded">
-									<complexType>
-										<choice minOccurs="0" maxOccurs="unbounded">
-											<element name="Say" minOccurs="0" maxOccurs="unbounded">
-												<complexType>
-													<simpleContent>
-														<extension base="xs:string">
-															<attribute name="voice" type="xs:string"/>
-															<attribute name="language" type="xs:string"/>
-															<attribute name="loop" type="xs:integer"/>
-														</extension>
-													</simpleContent>
-												</complexType>
-											</element>
-											<element name="Play" minOccurs="0" maxOccurs="unbounded">
-												<complexType>
-													<simpleContent>
-														<extension base="xs:string">
-															<attribute name="loop" type="xs:integer"/>
-														</extension>
-													</simpleContent>
-												</complexType>
-											</element>
-										</choice>
-										<attribute name="action" type="xs:string"/>
-										<attribute name="method" type="xs:string"/>
-										<attribute name="timeout" type="xs:integer"/>
-										<attribute name="numDigits" type="xs:integer"/>
-										<attribute name="finishOnKey" type="xs:string" use="optional"/>
-										<attribute name="actionOnEmptyResult" type="xs:boolean" use="optional"/>
-									</complexType>
+					<complexType>
+						<choice minOccurs="0" maxOccurs="unbounded">
+							<element name="Say" minOccurs="0" maxOccurs="unbounded" type="SayType"/>
+							<element name="Play" minOccurs="0" maxOccurs="unbounded" type="PlayType"/>
+						</choice>
+						<attribute name="action" type="xs:string"/>
+						<attribute name="method" type="xs:string"/>
+						<attribute name="timeout" type="xs:integer"/>
+						<attribute name="numDigits" type="xs:integer"/>
+						<attribute name="finishOnKey" type="xs:string" use="optional"/>
+						<attribute name="actionOnEmptyResult" type="xs:boolean" use="optional"/>
+					</complexType>
+				</element>
 				<element name="Dial" minOccurs="0" maxOccurs="unbounded">
 					<complexType>
-						<sequence>
-							<element name="Number" minOccurs="1" maxOccurs="unbounded" type="xs:string" />
-							<!-- Add more nested elements as needed -->
-						</sequence>
-						<attribute name="action" type="xs:string" />
-						<attribute name="method" type="xs:string" />
-						<attribute name="timeout" type="xs:integer" />
+						<choice minOccurs="0" maxOccurs="unbounded">
+							<element name="Number" minOccurs="0" maxOccurs="unbounded" type="xs:string" />
+							<element name="Queue" minOccurs="0" maxOccurs="unbounded">
+								<complexType>
+									<simpleContent>
+										<extension base="xs:string">
+											<attribute name="music" type="xs:string" use="optional" />
+											<attribute name="action" type="xs:string" use="optional" />
+										</extension>
+									</simpleContent>
+								</complexType>
+							</element>
+							<element name="Client" minOccurs="0" maxOccurs="unbounded">
+								<complexType>
+									<simpleContent>
+										<extension base="xs:string">
+											<attribute name="statusCallbackEvent" type="xs:string" use="optional" />
+											<attribute name="statusCallback" type="xs:string" use="optional" />
+											<attribute name="statusCallbackMethod" type="xs:string" use="optional" />
+										</extension>
+									</simpleContent>
+								</complexType>
+							</element>
+							<element name="Conference" minOccurs="0" maxOccurs="unbounded" type="xs:string" />
+							<element name="Voicemail" minOccurs="0" maxOccurs="unbounded">
+								<complexType>
+									<attribute name="inbox" type="xs:boolean" use="optional" />
+									<attribute name="user" type="xs:string" use="optional" />
+								</complexType>
+							</element>
+							<element name="Barge" minOccurs="0" maxOccurs="unbounded">
+								<complexType>
+									<simpleContent>
+										<extension base="xs:string">
+											<attribute name="whisper" type="xs:string" use="optional" />
+											<attribute name="bridge" type="xs:string" use="optional" />
+											<attribute name="commands" type="xs:string" use="optional" />
+										</extension>
+									</simpleContent>
+								</complexType>
+							</element>
+						</choice>
+						<attribute name="callerId" type="xs:string" use="optional" />
+						<attribute name="fromDisplayName" type="xs:string" use="optional" />
+						<attribute name="hangupOnStar" type="xs:boolean" use="optional" />
+						<attribute name="hangupOnStarContext" type="xs:string" use="optional" />
+						<attribute name="ringtone" type="xs:string" use="optional" />
+						<attribute name="timeout" type="xs:integer" use="optional" />
 					</complexType>
 				</element>
 				<element name="Enqueue" minOccurs="0" maxOccurs="unbounded">
@@ -101,7 +123,6 @@
 						<attribute name="length" type="xs:integer" use="optional" />
 					</complexType>
 				</element>
-                <element name="Reject" minOccurs="0" maxOccurs="unbounded">
 				<element name="Reject" minOccurs="0" maxOccurs="1">
 					<complexType>
 						<attribute name="reason" use="optional">
