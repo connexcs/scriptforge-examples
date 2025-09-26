@@ -1,268 +1,276 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
-	<!-- Reusable complex type for Say element -->
-	<xs:complexType name="SayType" mixed="true">
-		<xs:simpleContent>
-			<xs:extension base="xs:string">
-				<xs:attribute name="voice" type="xs:string" use="optional" />
-				<xs:attribute name="language" type="xs:string" use="optional" />
-				<xs:attribute name="loop" type="xs:int" use="optional" />
-			</xs:extension>
-		</xs:simpleContent>
-	</xs:complexType>
 
-	<!-- Reusable complex type for Dial element -->
-	<xs:complexType name="DialType" mixed="true">
+    <!-- ========================= -->
+    <!-- Reusable Types -->
+    <!-- ========================= -->
+
+    <!-- Base audio type -->
+    <xs:complexType name="SayType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="voice" type="xs:string" use="optional"/>
+                <xs:attribute name="language" type="xs:string" use="optional"/>
+                <xs:attribute name="loop" type="xs:int" use="optional"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+	<!-- Play Type -->
+    <xs:complexType name="PlayType" mixed="true">
+        <xs:attribute name="loop" type="xs:int" use="optional"/>
+    </xs:complexType>
+
+	<!-- Redirect Type -->
+    <xs:complexType name="RedirectType" mixed="true">
+        <xs:attribute name="method" type="xs:string" use="optional"/>
+    </xs:complexType>
+
+	<!-- Condition Type -->
+	<xs:complexType name="ConditionType">
 		<xs:choice minOccurs="0" maxOccurs="unbounded">
-			<xs:element name="Number" type="xs:string" />
-			<xs:element name="Client">
-				<xs:complexType mixed="true">
-					<xs:attribute name="statusCallbackEvent" type="xs:string" use="optional" />
-					<xs:attribute name="statusCallback" type="xs:string" use="optional" />
-					<xs:attribute name="statusCallbackMethod" use="optional">
-						<xs:simpleType>
-							<xs:restriction base="xs:string">
-								<xs:enumeration value="GET" />
-								<xs:enumeration value="POST" />
-							</xs:restriction>
-						</xs:simpleType>
-					</xs:attribute>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="Conference" type="xs:string" />
-			<xs:element name="Queue">
-				<xs:complexType mixed="true">
-					<xs:attribute name="action" type="xs:string" use="optional" />
-					<xs:attribute name="timeout" type="xs:string" use="optional" />
-					<xs:attribute name="timeout-destination" type="xs:string" use="optional" />
-					<xs:attribute name="music" type="xs:string" use="optional" />
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="Voicemail">
-				<xs:complexType mixed="true">
-					<xs:attribute name="inbox" type="xs:boolean" use="optional" />
-					<xs:attribute name="user" type="xs:string" use="optional" />
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="LLMAgent" type="xs:string" />
-			<xs:element name="LLM-Agent">
-				<xs:complexType mixed="true">
-					<xs:attribute name="appId" type="xs:string" use="optional" />
-					<xs:attribute name="voice" type="xs:string" use="optional" />
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="Barge">
-				<xs:complexType mixed="true">
-					<xs:attribute name="whisper" type="xs:string" use="optional" />
-					<xs:attribute name="bridge" type="xs:string" use="optional" />
-					<xs:attribute name="commands" type="xs:string" use="optional" />
-				</xs:complexType>
-			</xs:element>
+			<xs:element name="Say" type="SayType"/>
+			<xs:element name="Set" type="SetType"/>
+			<xs:element name="Enter" type="xs:string"/>
+			<xs:element name="Press" type="PressType"/>
+			<xs:element name="Dial" type="DialType"/>
 		</xs:choice>
-		<xs:attribute name="action" type="xs:string" use="optional" />
-		<xs:attribute name="method" type="xs:string" use="optional" />
-		<xs:attribute name="timeout" type="xs:int" use="optional" />
-		<xs:attribute name="barge" type="xs:boolean" use="optional" />
-		<xs:attribute name="ringtone" type="xs:string" use="optional" />
+		<xs:attribute name="field" type="xs:string" use="optional"/>
+		<xs:attribute name="expression" type="xs:string" use="optional"/>
+		<xs:attribute name="year" type="xs:gYear"/>
+		<xs:attribute name="yday" type="xs:positiveInteger"/>
+		<xs:attribute name="mon" type="xs:string"/>
+		<xs:attribute name="mday" type="xs:positiveInteger"/>
+		<xs:attribute name="week" type="xs:positiveInteger"/>
+		<xs:attribute name="mweek" type="xs:positiveInteger"/>
+		<xs:attribute name="wday" type="xs:string"/>
+		<xs:attribute name="sunmontuewedthufrisat" type="xs:string"/>
+		<xs:attribute name="hour" type="xs:nonNegativeInteger"/>
+		<xs:attribute name="minute" type="xs:nonNegativeInteger"/>
+		<xs:attribute name="minute-of-day" type="xs:nonNegativeInteger"/>
+		<xs:attribute name="time-of-day" type="xs:string"/>
+		<xs:attribute name="time" type="xs:string"/>
+		<xs:attribute name="date-time" type="xs:string"/>
 	</xs:complexType>
 
-	<!-- Reusable complex type for Stream element -->
-	<xs:complexType name="StreamType">
-		<xs:choice minOccurs="0" maxOccurs="unbounded">
-			<xs:element name="Parameter">
-				<xs:complexType>
-					<xs:attribute name="name" type="xs:string" use="optional" />
-					<xs:attribute name="value" type="xs:string" use="optional" />
-				</xs:complexType>
-			</xs:element>
-		</xs:choice>
-		<xs:attribute name="url" type="xs:string" use="optional" />
-		<xs:attribute name="mix_type" use="optional">
-			<xs:simpleType>
-				<xs:restriction base="xs:string">
-					<xs:enumeration value="mono" />
-					<xs:enumeration value="stereo" />
-					<xs:enumeration value="mixed" />
-				</xs:restriction>
-			</xs:simpleType>
-		</xs:attribute>
-	</xs:complexType>
+	<!-- Transfer Type -->
+    <xs:complexType name="TransferType" mixed="true">
+        <xs:attribute name="attended" type="xs:boolean" use="optional"/>
+        <xs:attribute name="leg" use="optional">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="a"/>
+                    <xs:enumeration value="b"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
 
-	<xs:complexType name="SetType">
-		<xs:attribute name="name" type="xs:string" use="optional" />
-		<xs:attribute name="value" type="xs:string" use="optional" />
-		<xs:attribute name="header" type="xs:boolean" use="optional" />
-	</xs:complexType>
+	<!-- Barge Type -->
+    <xs:complexType name="BargeType" mixed="true">
+        <xs:attribute name="whisper" type="xs:string" use="optional"/>
+        <xs:attribute name="bridge" type="xs:string" use="optional"/>
+        <xs:attribute name="commands" type="xs:string" use="optional"/>
+    </xs:complexType>
 
-	<!-- Reusable complex type for Press element -->
-	<xs:complexType name="PressType">
-		<xs:choice minOccurs="0" maxOccurs="unbounded">
-			<xs:element name="Dial" type="DialType" />
-			<xs:element name="Play" type="xs:string" />
-			<xs:element name="Redirect">
-				<xs:complexType mixed="true">
-					<xs:attribute name="method" type="xs:string" use="optional" />
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="Transfer">
-				<xs:complexType mixed="true">
-					<xs:attribute name="attended" type="xs:boolean" use="optional" />
-					<xs:attribute name="leg" use="optional">
-						<xs:simpleType>
-							<xs:restriction base="xs:string">
-								<xs:enumeration value="a" />
-								<xs:enumeration value="b" />
-							</xs:restriction>
-						</xs:simpleType>
-					</xs:attribute>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="Hangup">
-				<xs:complexType />
-			</xs:element>
-			<xs:element name="Enter" type="xs:string" />
-		</xs:choice>
-		<xs:attribute name="digit" type="xs:string" use="optional" />
-		<xs:attribute name="context" type="xs:string" use="optional" />
-		<xs:attribute name="dtmf_leg" type="xs:string" use="optional" />
-	</xs:complexType>
+	<!-- Queue Type -->
+    <xs:complexType name="QueueType" mixed="true">
+        <xs:attribute name="action" type="xs:string" use="optional"/>
+        <xs:attribute name="timeout" type="xs:string" use="optional"/>
+        <xs:attribute name="timeout-destination" type="xs:string" use="optional"/>
+        <xs:attribute name="music" type="xs:string" use="optional"/>
+    </xs:complexType>
+    
+	<!-- Voicemail Type -->
+    <xs:complexType name="VoicemailType" mixed="true">
+        <xs:attribute name="inbox" type="xs:boolean" use="optional"/>
+        <xs:attribute name="user" type="xs:string" use="optional"/>
+    </xs:complexType>
 
-	<xs:element name="Response">
-		<xs:complexType>
-			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element name="Say" type="SayType" />
-				<xs:element name="Play">
-					<xs:complexType mixed="true">
-						<xs:attribute name="loop" type="xs:int" use="optional" />
-					</xs:complexType>
-				</xs:element>
-				<xs:element name="Gather">
-					<xs:complexType mixed="true">
-						<xs:choice minOccurs="0" maxOccurs="unbounded">
-							<xs:element name="Say" type="SayType" />
-							<xs:element name="Play">
-								<xs:complexType mixed="true">
-									<xs:attribute name="loop" type="xs:int" use="optional" />
-								</xs:complexType>
-							</xs:element>
-						</xs:choice>
-						<xs:attribute name="action" type="xs:string" use="optional" />
-						<xs:attribute name="method" type="xs:string" use="optional" />
-						<xs:attribute name="timeout" type="xs:int" use="optional" />
-						<xs:attribute name="numDigits" type="xs:int" use="optional" />
-						<xs:attribute name="finishOnKey" type="xs:string" use="optional" />
-						<xs:attribute name="actionOnEmptyResult" type="xs:boolean" use="optional" />
-						<xs:attribute name="maxDigits" type="xs:int" use="optional" />
-					</xs:complexType>
-				</xs:element>
-				<xs:element name="Dial" type="DialType" />
-				<xs:element name="Pause">
-					<xs:complexType>
-						<xs:attribute name="length" type="xs:int" use="optional" />
-					</xs:complexType>
-				</xs:element>
-				<xs:element name="Hangup">
-					<xs:complexType />
-				</xs:element>
-				<xs:element name="Reject">
-					<xs:complexType>
-						<xs:attribute name="reason" use="optional">
-							<xs:simpleType>
-								<xs:restriction base="xs:string">
-									<xs:enumeration value="rejected" />
-									<xs:enumeration value="busy" />
-								</xs:restriction>
-							</xs:simpleType>
-						</xs:attribute>
-					</xs:complexType>
-				</xs:element>
-				<xs:element name="Redirect">
-					<xs:complexType mixed="true">
-						<xs:attribute name="method" type="xs:string" use="optional" />
-					</xs:complexType>
-				</xs:element>
-				<xs:element name="Press" type="PressType" />
-				<xs:element name="Condition">
-					<xs:complexType>
-						<xs:choice minOccurs="0" maxOccurs="unbounded">
-							<xs:element name="Say" type="SayType" />
-							<xs:element name="Set" type="SetType" />
-							<xs:element name="Enter" type="xs:string" />
-							<xs:element name="Press" type="PressType" />
-							<xs:element name="Dial" type="DialType" />
-						</xs:choice>
-						<xs:attribute name="field" type="xs:string" use="optional" />
-						<xs:attribute name="expression" type="xs:string" use="optional" />
-						<xs:attribute name="wday" type="xs:string" use="optional" />
-						<xs:attribute name="year" type="xs:string" use="optional" />
-						<xs:attribute name="time-of-day" type="xs:string" use="optional" />
-						<xs:attribute name="timezone" type="xs:string" use="optional" />
-					</xs:complexType>
-				</xs:element>
-				<xs:element name="Connect">
-					<xs:complexType>
-						<xs:choice minOccurs="0" maxOccurs="unbounded">
-							<xs:element name="Stream" type="StreamType" />
-						</xs:choice>
-					</xs:complexType>
-				</xs:element>
-				<xs:element name="Start">
-					<xs:complexType>
-						<xs:choice minOccurs="0" maxOccurs="unbounded">
-							<xs:element name="Stream" type="StreamType" />
-						</xs:choice>
-					</xs:complexType>
-				</xs:element>
-				<xs:element name="Stop">
-					<xs:complexType>
-						<xs:choice minOccurs="0" maxOccurs="unbounded">
-							<xs:element name="Stream">
-								<xs:complexType />
-							</xs:element>
-						</xs:choice>
-					</xs:complexType>
-				</xs:element>
-				<xs:element name="Before">
-					<xs:complexType>
-						<xs:choice minOccurs="0" maxOccurs="unbounded">
-							<xs:element name="Set" type="SetType" />
-						</xs:choice>
-					</xs:complexType>
-				</xs:element>
-				<!-- Reusable complex type for Set element -->
-				<xs:element name="Set" type="SetType" />
-				<xs:element name="Digit">
-					<xs:complexType mixed="true">
-						<xs:attribute name="dtmf_leg" type="xs:string" use="optional" />
-					</xs:complexType>
-				</xs:element>
-				<xs:element name="Enter" type="xs:string" />
-				<xs:element name="Transfer">
-					<xs:complexType mixed="true">
-						<xs:attribute name="attended" type="xs:boolean" use="optional" />
-						<xs:attribute name="leg" use="optional">
-							<xs:simpleType>
-								<xs:restriction base="xs:string">
-									<xs:enumeration value="a" />
-									<xs:enumeration value="b" />
-								</xs:restriction>
-							</xs:simpleType>
-						</xs:attribute>
-					</xs:complexType>
-				</xs:element>
-				<xs:element name="Parameter">
-					<xs:complexType>
-						<xs:attribute name="name" type="xs:string" use="optional" />
-						<xs:attribute name="value" type="xs:string" use="optional" />
-					</xs:complexType>
-				</xs:element>
-				<!-- Simple elements -->
-				<xs:element name="Echo" type="xs:string" />
-				<xs:element name="Enqueue" type="xs:string" />
-				<xs:element name="Conference" type="xs:string" />
-				<xs:element name="Stream" type="xs:string" />
-				<xs:element name="Variables" type="xs:string" />
-			</xs:choice>
-		</xs:complexType>
-	</xs:element>
+	<!-- LLM Type -->
+    <xs:complexType name="LLMAgentType" mixed="true">
+        <xs:attribute name="appId" type="xs:string" use="optional"/>
+        <xs:attribute name="voice" type="xs:string" use="optional"/>
+    </xs:complexType>
+    <xs:complexType name="ParameterType">
+    <xs:attribute name="name" type="xs:string" use="optional"/>
+    <xs:attribute name="value" type="xs:string" use="optional"/>
+</xs:complexType>
+ 
+    <!-- Stream Type -->
+    <xs:complexType name="StreamType">
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Parameter" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:attribute name="name" type="xs:string" use="optional"/>
+                    <xs:attribute name="value" type="xs:string" use="optional"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:choice>
+        <xs:attribute name="url" type="xs:string" use="optional"/>
+        <xs:attribute name="mix_type" use="optional">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="mono"/>
+                    <xs:enumeration value="stereo"/>
+                    <xs:enumeration value="mixed"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="SetType">
+        <xs:attribute name="name" type="xs:string" use="optional"/>
+        <xs:attribute name="value" type="xs:string" use="optional"/>
+        <xs:attribute name="header" type="xs:boolean" use="optional"/>
+    </xs:complexType>
+
+    <!-- Dial Type -->
+    <xs:complexType name="DialType" mixed="true">
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Number" type="xs:string"/>
+            <xs:element name="Client">
+                <xs:complexType mixed="true">
+                    <xs:attribute name="statusCallbackEvent" type="xs:string" use="optional"/>
+                    <xs:attribute name="statusCallback" type="xs:string" use="optional"/>
+                    <xs:attribute name="statusCallbackMethod" use="optional">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="GET"/>
+                                <xs:enumeration value="POST"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="Conference" type="xs:string"/>
+            <xs:element name="Queue" type="QueueType"/>
+            <xs:element name="Voicemail" type="VoicemailType"/>
+            <xs:element name="LLMAgent" type="xs:string"/>
+            <xs:element name="LLM-Agent" type="LLMAgentType"/>
+            <xs:element name="Barge" type="BargeType"/>
+        </xs:choice>
+        <xs:attribute name="action" type="xs:string" use="optional"/>
+        <xs:attribute name="method" type="xs:string" use="optional"/>
+        <xs:attribute name="timeout" type="xs:int" use="optional"/>
+        <xs:attribute name="barge" type="xs:boolean" use="optional"/>
+        <xs:attribute name="ringtone" type="xs:string" use="optional"/>
+        <xs:attribute name="callerId" type="xs:string" use="optional"/>
+        <xs:attribute name="fromDisplayName" type="xs:string" use="optional"/>
+        <xs:attribute name="hangupOnStar" type="xs:string" use="optional"/>
+        <xs:attribute name="hangupOnStarContext" type="xs:string" use="optional"/>
+    </xs:complexType>
+
+    <!-- Gather Type -->
+    <xs:complexType name="GatherType" mixed="true">
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Say" type="SayType"/>
+            <xs:element name="Play" type="PlayType"/>
+        </xs:choice>
+        <xs:attribute name="action" type="xs:string" use="optional"/>
+        <xs:attribute name="method" type="xs:string" use="optional"/>
+        <xs:attribute name="timeout" type="xs:int" use="optional"/>
+        <xs:attribute name="numDigits" type="xs:int" use="optional"/>
+        <xs:attribute name="finishOnKey" type="xs:string" use="optional"/>
+        <xs:attribute name="actionOnEmptyResult" type="xs:boolean" use="optional"/>
+        <xs:attribute name="maxDigits" type="xs:int" use="optional"/>
+    </xs:complexType>
+
+    <!-- Pause Type -->
+    <xs:complexType name="PauseType">
+        <xs:attribute name="length" type="xs:int" use="optional"/>
+    </xs:complexType>
+
+    <!-- Reject Type -->
+    <xs:complexType name="RejectType">
+        <xs:attribute name="reason" use="optional">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="rejected"/>
+                    <xs:enumeration value="busy"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+
+    <!-- Connect / Start Type -->
+    <xs:complexType name="ConnectType">
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Stream" type="StreamType"/>
+        </xs:choice>
+    </xs:complexType>
+
+    <!-- Stop Type -->
+    <xs:complexType name="StopType">
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Stream"/>
+        </xs:choice>
+    </xs:complexType>
+
+    <!-- Before Type -->
+    <xs:complexType name="BeforeType">
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Set" type="SetType"/>
+        </xs:choice>
+    </xs:complexType>
+
+    <!-- Digit Type -->
+    <xs:complexType name="DigitType" mixed="true">
+        <xs:attribute name="dtmf_leg" type="xs:string" use="optional"/>
+    </xs:complexType>
+
+    <!-- Press Type -->
+    <xs:complexType name="PressType">
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="Dial" type="DialType"/>
+            <xs:element name="Play" type="PlayType"/>
+            <xs:element name="Redirect" type="RedirectType"/>
+            <xs:element name="Transfer" type="TransferType"/>
+            <xs:element name="Hangup">
+                <xs:complexType/>
+            </xs:element>
+            <xs:element name="Enter" type="xs:string"/>
+        </xs:choice>
+        <xs:attribute name="digit" type="xs:string" use="optional"/>
+        <xs:attribute name="context" type="xs:string" use="optional"/>
+        <xs:attribute name="dtmf_leg" type="xs:string" use="optional"/>
+    </xs:complexType>
+
+    <!-- ========================= -->
+    <!-- Root Response Element -->
+    <!-- ========================= -->
+
+    <xs:element name="Response">
+        <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="Say" type="SayType"/>
+                <xs:element name="Play" type="PlayType"/>
+                <xs:element name="Gather" type="GatherType"/>
+                <xs:element name="Dial" type="DialType"/>
+                <xs:element name="Pause" type="PauseType"/>
+                <xs:element name="Hangup">
+                    <xs:complexType/>
+                </xs:element>
+                <xs:element name="Reject" type="RejectType"/>
+                <xs:element name="Redirect" type="RedirectType"/>
+                <xs:element name="Press" type="PressType"/>
+                <xs:element name="Connect" type="ConnectType"/>
+                <xs:element name="Condition" type="ConditionType"/>
+                <xs:element name="Start" type="ConnectType"/>
+                <xs:element name="Stop" type="StopType"/>
+                <xs:element name="Before" type="BeforeType"/>
+                <xs:element name="Set" type="SetType"/>
+                <xs:element name="Digit" type="DigitType"/>
+                <xs:element name="Enter" type="xs:string"/>
+                <xs:element name="Transfer" type="TransferType"/>
+                <xs:element name="Parameter" type="ParameterType"/>
+                <xs:element name="Echo" type="xs:string"/>
+                <xs:element name="Enqueue" type="xs:string"/>
+                <xs:element name="Conference" type="xs:string"/>
+                <xs:element name="Stream" type="StreamType"/>
+                <xs:element name="Variables" type="xs:string"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+
 </xs:schema>
