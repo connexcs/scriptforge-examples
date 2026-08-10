@@ -74,6 +74,7 @@
 		<xs:attribute name="whisper" type="xs:string" use="optional"/>
 		<xs:attribute name="bridge" type="xs:string" use="optional"/>
 		<xs:attribute name="commands" type="xs:string" use="optional"/>
+		<xs:attribute name="username" type="xs:boolean" use="optional"/>
 	</xs:complexType>
 
 	<!-- Queue Type -->
